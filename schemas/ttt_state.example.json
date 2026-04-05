@@ -1,0 +1,68 @@
+{
+  "version": "1.0",
+  "product_thesis": "AI tool that helps indie YouTube creators turn long videos into Shorts",
+  "current": {
+    "phase": "define",
+    "status": "in_progress",
+    "substep": "scoping_v1_features",
+    "progress_label": "Deciding what's v1 and what's later"
+  },
+  "phases": {
+    "clarify": {
+      "status": "complete",
+      "completed_at": "2026-04-04T14:20:00Z",
+      "output_files": ["clarification.md"]
+    },
+    "validate": {
+      "status": "complete",
+      "completed_at": "2026-04-04T14:45:00Z",
+      "output_files": ["market_research.md", "user_research.md"],
+      "agents_used": [
+        {"name": "market_researcher", "attempts": 2, "final_status": "pass"},
+        {"name": "user_researcher", "attempts": 1, "final_status": "pass"}
+      ]
+    },
+    "define": {
+      "status": "in_progress",
+      "started_at": "2026-04-04T14:50:00Z",
+      "output_files": [],
+      "agents_used": []
+    },
+    "specify": {
+      "status": "not_started",
+      "output_files": [],
+      "agents_used": []
+    },
+    "launch": {
+      "status": "not_started",
+      "output_files": [],
+      "agents_used": []
+    }
+  },
+  "decisions": [],
+  "assumptions": [],
+  "scope": {
+    "v1_features": [],
+    "v2_parking_lot": [],
+    "out_of_scope": []
+  },
+  "pivots": [],
+  "retry_history": [],
+  "gap_assessments": {
+    "define_to_specify": {"ran": false, "results": null, "failures_acknowledged": []},
+    "spec_completeness": {"ran": false, "results": null}
+  },
+  "vibe_it": {
+    "used": false,
+    "triggered_at_phase": null,
+    "assumptions_made": []
+  },
+  "session": {
+    "artifact_root": "ttt",
+    "last_active": "2026-04-04T14:55:00Z",
+    "last_action": "",
+    "next_action": "",
+    "context_clear_recommended": false,
+    "last_joke_category": null
+  }
+}
