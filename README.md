@@ -4,6 +4,8 @@
 
 TTT answers the two questions every solo builder skips: "Should I build this?" and "What exactly should I build?" It takes a vague idea and turns it into a validated, scoped, build-ready spec. Before you write a single line of code.
 
+This is built after getting inspired by GSD https://github.com/gsd-build/get-shit-done. TTT will tell you what you should actually build and how. GSD will help you build it reliably. While GSD is your hero program manager, TTT will be your hero product manager.
+
 ---
 
 *"I had the idea on Monday, TTT killed it by Tuesday, suggested something better by Wednesday, and I was coding by Thursday."*
@@ -16,7 +18,6 @@ Solo developers skip PM work. Every time. You have an idea, you open Cursor, and
 
 Tools like GSD solve the "how do I build reliably" problem. Nothing solves the "should I build this at all" problem. TTT does.
 
-It is the PM layer that sits upstream of your coding agent. GSD is your program manager. TTT is your product manager.
 
 ---
 
