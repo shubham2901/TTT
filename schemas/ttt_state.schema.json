@@ -1,0 +1,153 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ttt.dev/schemas/ttt_state.schema.json",
+  "title": "TTT session state",
+  "description": "Persisted session for TTT (To The T). Written to `{artifact_root}/ttt_state.json`.",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "version": {
+      "type": "string",
+      "description": "Schema / state format version.",
+      "examples": ["1.0"]
+    },
+    "product_thesis": {
+      "type": "string",
+      "description": "One-line description of what we're building (may evolve)."
+    },
+    "current": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "phase": {
+          "type": "string",
+          "description": "High-level conversation phase.",
+          "enum": ["understand", "research", "plan", "handoff", "complete"]
+        },
+        "status": {
+          "type": "string",
+          "enum": ["not_started", "in_progress", "complete", "skipped", "failed"]
+        },
+        "substep": { "type": "string" },
+        "progress_label": { "type": "string" }
+      }
+    },
+    "phases": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "understand": { "$ref": "#/$defs/phaseBlock" },
+        "research": { "$ref": "#/$defs/phaseBlock" },
+        "plan": { "$ref": "#/$defs/phaseBlock" },
+        "handoff": { "$ref": "#/$defs/phaseBlock" }
+      }
+    },
+    "decisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "properties": {
+          "at": { "type": "string", "format": "date-time" },
+          "summary": { "type": "string" }
+        }
+      }
+    },
+    "assumptions": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "v1_features": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "v2_parking_lot": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "out_of_scope": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "pivots": {
+      "type": "array",
+      "items": { "type": "object", "additionalProperties": true }
+    },
+    "retry_history": {
+      "type": "array",
+      "items": { "type": "object", "additionalProperties": true }
+    },
+    "gap_assessments": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "vibe_it": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "used": { "type": "boolean" },
+        "triggered_at_phase": {
+          "oneOf": [{ "type": "string" }, { "type": "null" }]
+        },
+        "assumptions_made": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "session": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "artifact_root": {
+          "type": "string",
+          "description": "Directory (relative to project root) for TTT outputs.",
+          "examples": ["ttt", "ttt-docs", "ttt-artifacts"]
+        },
+        "last_active": { "type": "string", "format": "date-time" },
+        "last_action": { "type": "string" },
+        "next_action": { "type": "string" },
+        "context_clear_recommended": { "type": "boolean" },
+        "last_joke_category": {
+          "oneOf": [{ "type": "string" }, { "type": "null" }]
+        }
+      }
+    }
+  },
+  "$defs": {
+    "phaseBlock": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["not_started", "in_progress", "complete", "skipped", "failed"]
+        },
+        "started_at": { "type": "string", "format": "date-time" },
+        "completed_at": { "type": "string", "format": "date-time" },
+        "output_files": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "agents_used": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "attempts": { "type": "integer" },
+              "final_status": { "type": "string" }
+            },
+            "additionalProperties": true
+          }
+        }
+      }
+    }
+  }
+}

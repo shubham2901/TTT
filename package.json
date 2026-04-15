@@ -1,0 +1,10 @@
+{
+  "name": "to-the-t",
+  "version": "0.1.0",
+  "description": "The PM you never hired. Get the right spec before you code.",
+  "license": "MIT",
+  "bin": {
+    "ttt": "./bin/install.js"
+  },
+  "files": ["bin", "skills", "commands", "agents", "docs", "schemas"]
+}

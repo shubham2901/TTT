@@ -1,0 +1,4 @@
+# Local-only: not committed, not published (see README or npm "files" in package.json)
+dev-archive/
+
+.DS_Store
