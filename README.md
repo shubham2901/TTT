@@ -1,10 +1,10 @@
-# TTT (TO THE T)
+# TTT (To The T)
 
-**Get the right spec the first time. Then build it reliably.**
+**The PM you never hired. For solo vibe coders who ship fast and want to ship right.**
 
-You know the feeling. You have an idea, you open Cursor, and three weeks later you realize you built the wrong thing. The market has 50 competitors, your user was wrong, or you shipped 12 features when you needed 3.
+You have an idea. You open Cursor. Three weeks later you realize the market has 50 competitors, your user was wrong, and you built 12 features when you needed 3.
 
-TTT fixes that. It's the product manager you never hired — for solo vibecoders who ship fast and want to ship right.
+TTT fixes that. One command. A conversation. You get back a validated spec your coding agent can build from.
 
 ```
 npx to-the-t@latest
@@ -12,115 +12,82 @@ npx to-the-t@latest
 
 ---
 
-*"I had the idea on Monday, TTT killed it by Tuesday, suggested something better by Wednesday, and I was coding by Thursday."*
-
----
-
 ## The Problem
 
 The beginning is easy. The end is hard.
 
-Every vibecoder knows this. You describe what you want, AI generates code, and the first few prompts create something that looks real. Then you hit production. Authentication breaks. The database schema is wrong. You realize nobody actually wants what you built.
+You describe what you want, AI generates code, and the first few prompts create something that looks real. Then you hit production. The database schema is wrong. Nobody actually wants what you built. You spent a month on the wrong thing.
 
-Tools like **GSD** solve the "how do I build reliably" problem. GSD is your **program manager** — it keeps Claude on track, prevents context rot, and makes sure your code doesn't fall apart.
+Tools like [GSD](https://github.com/gsd-build/get-shit-done) solve the "how do I build reliably" problem — it keeps your coding agent on track and prevents context rot.
 
-But nothing solves the "should I build this at all" problem.
-
-**TTT is your product manager.** It answers the questions you skip: *Is this idea good? Who's the user? What's the smallest thing I can ship that people actually want?*
+Nothing solves the "should I build this at all" problem. **TTT does.**
 
 Use TTT to figure out **what** to build. Use GSD to build it **reliably**.
-
-```
-Your idea
-    │
-    ▼
-  TTT → Validated spec (13 files)
-    │
-    ▼
-  GSD → Reliable execution
-    │
-    ▼
-  You → Ship something people actually want
-```
 
 ---
 
 ## How It Works
 
-One command. Five phases. You talk, TTT thinks, argues back, researches, and hands you files your coding agent can build from.
+You talk. TTT asks sharp questions, researches the market, pushes back on weak ideas, and hands you files your coding agent can start from.
 
-### 1. Clarify
+### 1. Understand
 
-You describe your idea. TTT narrows it until it's actually specific.
+You describe your idea. TTT narrows it.
 
 ```
 You:  "AI tool for creators"
-TTT:  "That's vague. There are 50+ creator tools. YouTube? Instagram? 
+TTT:  "That's vague. There are 50+ creator tools. YouTube? Instagram?
        What kind of creators? What's their actual pain?"
 You:  "YouTube creators who want to make Shorts from long videos"
 TTT:  "Better. Indie creators under 10K subs, or established ones?"
 ```
 
-Most vibecoders skip this. They jump straight to building. Three weeks later they realize they built for the wrong person.
+Max 2 questions per turn. No walls of text. TTT gets what it needs and moves on.
 
-### 2. Validate
+### 2. Research
 
-TTT spawns two research agents in parallel:
+TTT researches competitors and users. Names real products — not vague categories. Finds what people actually complain about on Reddit and in app reviews. Checks timing.
 
-**Market Researcher** — Analyzes competitors, finds whitespace, checks timing. Uses real frameworks (Porter's Five Forces, SWOT, Business Model Canvas), not vibes.
-
-**User Researcher** — Maps user needs, identifies core desires, builds Jobs To Be Done with functional + emotional layers.
-
-Then TTT gives you a straight answer:
+Then gives you a straight answer:
 
 ```
-TTT:  "The space has 4 direct competitors. Two are bloated. One is 
-       expensive. Nobody is targeting indie creators under 10K subs. 
+TTT:  "The space has 4 direct competitors. Two are bloated. One is
+       expensive. Nobody targets indie creators under 10K subs.
        Timing is good — YouTube Shorts API just opened up.
 
-       Your call:
-       1. Build as-is
-       2. Narrow to creators in education niche (strongest whitespace)
-       3. Pivot to thumbnail generation (highest-pain job)
-       4. Your own direction"
+       (a) Build as planned
+       (b) Narrow to education creators (strongest whitespace)
+       (c) Different direction — tell me"
 ```
 
 If the idea is bad, TTT says so. It won't carry a flawed premise into a spec just to be nice.
 
-### 3. Define
+### 3. Plan
 
-Lock in exactly who, exactly what problem, and exactly what solution.
+Lock in exactly who, exactly what problem, exactly what to build first.
 
-TTT enforces a scope guard here. **Maximum 5 features for v1.** Every feature must map to a real user job. Everything else gets parked for v2.
+TTT enforces a scope guard. **Maximum 5 features for v1.** Every feature must solve a real user problem. Everything else gets parked for v2.
 
 ```
-TTT:  "That's 7 features. For a solo vibecoder shipping in 2 weeks, 
-       5 is the ceiling. Which 2 are we parking for v2?"
+TTT:  "That's 7 features. For a solo vibecoder shipping in 2 weeks,
+       5 is the ceiling. Which 2 are we parking?"
 ```
 
-This is where most weekend projects die — not from lack of skill, but from trying to build everything at once. TTT won't let you do that.
+TTT also flags things you'd forget: content operations burden, app store risks, legal issues, realistic cost estimates. When you're ready, say **"lock it"** and get a plain-English summary of the locked plan.
 
-### 4. Specify
+### 4. Handoff
 
-TTT spawns 4 agents in two waves:
+TTT generates everything your coding agent needs to start building: stack choices (named and explained), folder structure, build order, design direction, and an explicit list of what NOT to build.
 
-**Wave 1:** Product Detailer maps every user journey, specifies every feature with edge cases, builds a screen inventory, defines all states (empty, loading, error, success).
-
-**Wave 2 (parallel):** Tech Architect picks the exact stack with rationale. Design Advisor creates UX philosophy and component system. Test Generator writes acceptance tests for every feature.
-
-Then TTT runs a completeness check. Every feature has tests? Every screen has design guidance? No scope leak? It catches drift before you see the output.
-
-### 5. Launch Plan (optional)
-
-Distribution, metrics, v2 triggers. Skip it if you just want to ship.
+Hand `handoff.md` to Cursor, Claude Code, Lovable, or whatever you use. Start coding.
 
 ---
 
 ## Vibe It
 
-Don't want the full process? Say **"Vibe it!!"** after the first phase (or anytime) and TTT makes all remaining decisions for you.
+Don't want the full process? Say **"you decide"** after the first step and TTT makes all remaining decisions for you.
 
-It picks the most attractive market angle, the most specific user, the sharpest problem, and the smallest viable solution. States every assumption upfront. Generates all spec files immediately.
+It picks the most attractive market angle, the sharpest problem, and the smallest viable solution. States every assumption upfront. Generates all files immediately.
 
 Speed over depth. You can always revise after.
 
@@ -128,26 +95,80 @@ Speed over depth. You can always revise after.
 
 ## What You Get
 
-TTT generates a directory of markdown files. Every file is human-readable and coding-agent-ready.
-
 ```
-ttt-spec/
-  ttt_state.json           # Session state, decisions, pivot history
-  clarification.md         # Product thesis, user, platform, constraints
-  market_research.md       # Porter's, SWOT, BMC, whitespace, timing
-  user_research.md         # Maslow's, Reiss, JTBD, behavior patterns  
-  definition.md            # Exact user, problem, solution, scope guard
-  solution.md              # User journeys, feature specs, edge cases
-  tech_architecture.md     # Stack, data models, API routes
-  design_guideline.md      # UX philosophy, references, components
-  test_eval.md             # Acceptance tests, benchmarks, success criteria
-  coding_agent_prompt.md   # Copy-paste into Cursor/Claude Code. Day 0.
-  blueprint.md             # File manifest and reading order
-  versions.md              # Changelog, V2 parking lot, scope changes
-  launch.md                # Distribution and metrics (optional)
+ttt/
+  ttt_state.json    # Session state — resume anytime
+  research.md       # Competitors, user behavior, gaps, timing
+  plan.md           # Who, what, why, v1 scope, tech, design
+  handoff.md        # Everything your coding agent needs to start
 ```
 
-Hand `coding_agent_prompt.md` to your coding agent. It references everything else. Start building.
+**Optional** (only if you ask):
+
+```
+  screens.md        # Screen-by-screen descriptions
+  tests.md          # Acceptance tests per feature
+  summary.md        # Plain-English summary (say "save summary")
+```
+
+Every file is human-readable and coding-agent-ready.
+
+---
+
+## Install
+
+```bash
+npx to-the-t@latest
+```
+
+The installer asks two things:
+1. **Runtime** — Claude Code, Cursor, or Windsurf
+2. **Scope** — This project only, or global (all projects)
+
+That's it. TTT copies skills and commands into the right places.
+
+```bash
+# Non-interactive examples
+npx to-the-t --yes --project .              # All runtimes, local
+npx to-the-t --claude --global --yes        # Claude Code, global
+npx to-the-t --cursor --local --yes         # Cursor, local
+```
+
+### What gets installed
+
+| Source | Destination |
+|--------|------------|
+| Skills (`ttt-*`) | `.claude/skills/`, `.cursor/skills/`, or `.windsurf/skills/` |
+| Commands | `.claude/commands/ttt/` (Claude Code only) |
+| Research agent | `ttt/agents/` (project) |
+| State schema | `schemas/` (project) |
+
+---
+
+## Commands
+
+| Command | What it does |
+|---------|-------------|
+| `/ttt-new-idea` | Full flow: understand → research → plan → handoff |
+| `/ttt-vibe-it` | Fast mode. TTT decides everything. Get files immediately. |
+| `/ttt-resume` | Pick up where you left off (reads `ttt_state.json`) |
+| `/ttt-help` | Show commands |
+
+---
+
+## What Makes TTT Different
+
+**It says no.** Most tools validate everything. TTT will tell you your idea is weak before you waste a month on it.
+
+**Plain language.** No jargon during brainstorming. When tech decisions happen (plan and handoff only), every term gets a one-line explanation: "**Flutter** — one codebase for both Android and iPhone so you don't build two apps."
+
+**Scope guard with teeth.** 5 features max for v1. TTT pushes back if you try to add more. Deferred features go to a v2 parking lot, not into the void.
+
+**Flags what you'd forget.** Content operations, legal risks, app store gotchas, realistic cost estimates. The stuff that kills weekend projects three weeks in.
+
+**State survives context clears.** `ttt_state.json` tracks every decision. Close the session, come back tomorrow, `/ttt-resume` picks up where you left off.
+
+**Pivots without starting over.** Change direction and TTT keeps what's still valid. Same market, different angle? Keep the research, redo the plan.
 
 ---
 
@@ -162,82 +183,32 @@ They're complementary. **TTT is the product manager. GSD is the program manager.
 | **Output** | Validated spec | Working software |
 | **Prevents** | Building the wrong thing | Code falling apart at scale |
 
-**Workflow:**
-
 ```
-/ttt-new-idea           → Figure out what to build
-                        → Get spec files
-
-/gsd-new-project        → Initialize GSD with your spec
-/gsd-plan-phase 1       → Plan the work
-/gsd-execute-phase 1    → Build it reliably
-```
-
-You can use TTT without GSD, or GSD without TTT. But together? You get the right spec **and** reliable execution.
-
----
-
-## Why TTT Is Different
-
-**It says no.** If your idea doesn't hold up against market reality, TTT tells you before you waste a month building it. Most tools validate everything. TTT has opinions.
-
-**Real PM frameworks.** Not "analyze the market." Porter's Five Forces. SWOT per competitor. Business Model Canvas. Jobs To Be Done with three layers. The same frameworks a senior PM would use — without you needing to know them.
-
-**Scope guard with teeth.** Maximum 5 features for v1. Every feature must map to a real user job. TTT pushes back if you try to add more. Deferred features go to a V2 parking lot, not into the void.
-
-**State that survives crashes.** `ttt_state.json` tracks every decision, every assumption, every pivot. Close the session, come back tomorrow, TTT picks up exactly where you left off.
-
-**Pivots without starting over.** Change direction and TTT evaluates what's still valid. Same market, different angle? Keep the research, redo the definition. New market entirely? Re-research only what changed.
-
----
-
-## Getting Started
-
-```
-npx to-the-t@latest
+Your idea
+    │
+    ▼
+  TTT → Validated spec (research, plan, handoff)
+    │
+    ▼
+  Hand handoff.md to your coding agent
+    │
+    ▼
+  GSD → Reliable execution
 ```
 
-The installer prompts you to choose:
-1. **Runtime** — Claude Code, Cursor, Windsurf, etc.
-2. **Location** — Global (all projects) or local (current project only)
-
-Then:
-
-```
-/ttt-new-idea
-```
-
-Describe your idea. TTT takes it from there.
-
----
-
-## Commands
-
-| Command | What it does |
-|---------|-------------|
-| `/ttt-new-idea` | Full 5-phase flow: clarify → validate → define → specify → launch |
-| `/ttt-vibe-it` | Fast mode. TTT makes all decisions. Get spec files immediately. |
-| `/ttt-resume` | Pick up where you left off |
-| `/ttt-progress` | Where am I? What's next? |
-| `/ttt-help` | Show all commands |
+You can use either one independently. But together: right spec **and** reliable execution.
 
 ---
 
 ## Who This Is For
 
-Solo vibecoders who:
+Solo vibe coders who:
 - Have ideas but keep building the wrong thing
 - Ship fast but want to ship **right**
 - Don't want to play enterprise PM theater
 - Want honest feedback, not validation
 
-If you're the kind of person who opens Cursor before thinking through whether the idea is good — TTT is for you.
-
----
-
-## Status
-
-Under active development. Architecture designed. Agent prompts being built.
+If you open Cursor before thinking through whether the idea is good — TTT is for you.
 
 ---
 
@@ -247,9 +218,15 @@ Under active development. Architecture designed. Agent prompts being built.
 
 **Be honest.** If the data is weak, say so. If the idea is bad, say so. If an assumption was made, state it.
 
-**Be opinionated.** TTT has a point of view. It recommends one option, explains why, and lets you override.
+**Be opinionated.** TTT recommends one option, explains why, and lets you override.
 
 **Protect v1.** Solo builders overbuild. TTT aggressively recommends the smallest viable version. Good ideas that aren't essential get parked, not lost.
+
+---
+
+## Status
+
+v0.1.0 — published and functional. Skills, commands, research agent, and state management are shipped. Under active development.
 
 ---
 
