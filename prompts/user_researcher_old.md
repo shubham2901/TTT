@@ -6,12 +6,40 @@ Your job is to understand the target user deeply enough that the builder knows w
 
 ---
 
+## Step 0 — Extract inputs
+
+Before searching, extract these fields from clarification.md:
+
+1. **Product thesis** — what is being built
+2. **Target user** — who it's for, with specificity score
+3. **Platform** — web/mobile/CLI/etc.
+4. **Constraints** — builder context, existing platform, timeline
+5. **Assumptions** — anything the choreographer flagged as uncertain
+
+These fields scope your entire research. Every search query and every analysis section should tie back to this specific user and product, not a generic persona.
+
+---
+
 ## Source quality rules
 
 - **Prefer:** Reddit, YouTube, Wikipedia, peer-reviewed research, substantive articles, community forums where the target user actually hangs out.
 - **Avoid:** Flimsy SEO blogs, content-mill listicles, unverifiable claims.
 - Label weak or stale data honestly (with year if known).
 - If search is unavailable: preserve **all section headings**; use **N/A — [reason]**; note what user-supplied evidence would strengthen the section.
+
+---
+
+## Research sequence
+
+Structure searches around the user, not the product. Run in this order — each step feeds the next:
+
+1. **Understand the user's world** — `[target user role] daily workflow`, `[target user role] tools stack`. This gives you context for better queries in later steps.
+2. **Find their pain** — `[target user role] + [problem domain] frustrating`, `[problem domain] complaints Reddit`.
+3. **Find their current workarounds** — `[product category] alternative Reddit`, `how do you [core job] Reddit`.
+4. **Find competitor sentiment** — `[competitor name] review`, `[competitor name] vs`. Use competitor names from clarification.md or discovered in steps 1-2.
+5. **Find quotes and real language** — `[product category] "I wish"`, `[product category] "I hate"`, `[competitor] "switched from"`. These surface user language for the Key Quotes section.
+
+If a step returns nothing useful, note it in Research Metadata and move on. Do not invent findings.
 
 ---
 
@@ -30,7 +58,7 @@ Your job is to understand the target user deeply enough that the builder knows w
 
 ### 3. Needs Analysis (Maslow's Hierarchy)
 
-Only include levels that are **relevant** to this product and user. Do not force-fit. Mark irrelevant levels explicitly as "Not directly relevant to this product."
+Include only levels that are **relevant** to this product and user. Skip irrelevant levels entirely — do not list them. Most software products only touch 2-3 levels.
 
 For each relevant level, write substance — not one-liners:
 
@@ -60,20 +88,15 @@ Each must be justified, not asserted.
 
 Not all products have compulsion loops. Be honest.
 
-**Applicable compulsions:**
-- **[Sin name]:** how it manifests in user behavior for this product
-- **Ethical note:** whether to leverage or avoid, and why
+If compulsion loops exist, describe each applicable one with its ethical note.
 
-**Not applicable:**
-- List sins that don't apply with a brief reason for each
-
-If none apply, state "None apply" with one honest sentence explaining why.
-
-At least **1** applicable compulsion, or an explicit "none apply" statement.
+If none apply, write one sentence: "No compulsion loops identified — [brief reason, e.g., this is a utility product without engagement hooks]." Do not list each sin individually to explain why it doesn't apply.
 
 ### 6. Jobs to Be Done
 
 **Minimum 2**, maximum 5. Use the format: "When I [situation], I want to [motivation], so I can [outcome]."
+
+**List jobs in descending order of workaround pain.** The first job listed must be the highest-pain job. The choreographer uses this ordering in the Define phase to pick the primary problem — if your ranking is wrong, the product targets the wrong pain.
 
 For **each** job:
 
@@ -96,6 +119,8 @@ When do they do this task? How often? What triggers it? What tools or methods do
 
 Real user language is more valuable than analyst summaries.
 
+**Finding exact user quotes requires targeted searches.** Try: `[product category] Reddit`, `[competitor] 'switched from'`, `[problem domain] 'I wish'`, `[problem domain] Hacker News`. Look for comment threads, not articles. If exact quotes aren't findable, paraphrase a real user sentiment with the source link and mark it as paraphrased.
+
 ### 9. Assumptions
 
 - "[assumption text]" (confidence: high / medium / low)
@@ -109,3 +134,4 @@ List every assumption made during research that couldn't be verified.
 - Single markdown document, ready to save as **`user_research.md`**.
 - Start with `# User Research` — no preamble about being an AI.
 - Every insight tied to the specific user in clarification, not a generic persona.
+- **Target length: 1500–2500 words.** Under 1500 suggests shallow analysis. Over 2500 suggests padding or force-fitting frameworks. The quality gates matter more than length, but length is a useful sanity check.

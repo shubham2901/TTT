@@ -21,13 +21,17 @@ Index for runtime-specific entry points, setup guides, and the unified invocatio
 
 ## Shared behavior
 
-Both runtimes honor the same behavioral contract defined in `docs/PHASE0_DECISIONS.md`. Identical artifact set, scope guard, state persistence, and search degradation rules regardless of runtime.
+Both runtimes honor the same behavioral contract defined in `docs/PHASE0_DECISIONS.md` where it still applies. Core artifact set: `research.md`, `plan.md`, `handoff.md` (plus optional `screens.md`, `tests.md`). Same scope guard, state persistence, and search degradation expectations regardless of runtime.
 
 ---
 
 ## Canonical prompts
 
-All prompts live in `prompts/`. Both runtimes reference these files — never fork prompt content. Seven prompt files: choreographer, market researcher, user researcher, product detailer, tech architect, design advisor, test & eval generator.
+All prompts live in `prompts/`. Both runtimes reference these files — never fork prompt content.
+
+**Core path:** `choreographer.md` (orchestration) and `researcher.md` (combined market + user research).
+
+**Additional files** (optional / extended workflows): `product_detailer.md`, `tech_architect.md`, `design_advisor.md`, `test_eval_generator.md` — present for legacy or advanced Specify-style use; the default choreographer flow does not require them for the three core outputs above.
 
 ---
 

@@ -2,38 +2,32 @@
   "version": "1.0",
   "product_thesis": "AI tool that helps indie YouTube creators turn long videos into Shorts",
   "current": {
-    "phase": "define",
+    "phase": "plan",
     "status": "in_progress",
-    "substep": "scoping_v1_features",
-    "progress_label": "Deciding what's v1 and what's later"
+    "substep": "locking_v1_scope",
+    "progress_label": "Turning research into a concrete plan"
   },
   "phases": {
-    "clarify": {
+    "understand": {
       "status": "complete",
       "completed_at": "2026-04-04T14:20:00Z",
-      "output_files": ["clarification.md"]
+      "output_files": []
     },
-    "validate": {
+    "research": {
       "status": "complete",
       "completed_at": "2026-04-04T14:45:00Z",
-      "output_files": ["market_research.md", "user_research.md"],
+      "output_files": ["research.md"],
       "agents_used": [
-        {"name": "market_researcher", "attempts": 2, "final_status": "pass"},
-        {"name": "user_researcher", "attempts": 1, "final_status": "pass"}
+        {"name": "researcher", "attempts": 1, "final_status": "pass"}
       ]
     },
-    "define": {
+    "plan": {
       "status": "in_progress",
       "started_at": "2026-04-04T14:50:00Z",
       "output_files": [],
       "agents_used": []
     },
-    "specify": {
-      "status": "not_started",
-      "output_files": [],
-      "agents_used": []
-    },
-    "launch": {
+    "handoff": {
       "status": "not_started",
       "output_files": [],
       "agents_used": []
@@ -49,8 +43,7 @@
   "pivots": [],
   "retry_history": [],
   "gap_assessments": {
-    "define_to_specify": {"ran": false, "results": null, "failures_acknowledged": []},
-    "spec_completeness": {"ran": false, "results": null}
+    "plan_to_handoff": {"ran": false, "results": null, "failures_acknowledged": []}
   },
   "vibe_it": {
     "used": false,

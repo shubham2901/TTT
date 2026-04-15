@@ -2,42 +2,46 @@
 description: >
   TTT (To The T) product management skill for solo builders. Activates when
   user mentions TTT, product spec, product management, or validate idea.
-  Orchestrates idea → validated spec across five phases (Clarify, Validate,
-  Define, Specify, Launch). Read prompts/choreographer.md for full instructions.
+  Guides idea → research → plan → handoff. Read prompts/choreographer.md for full instructions.
 globs: ttt/**
 alwaysApply: false
 ---
 
 # TTT (To The T)
 
-Rigorous product management for solo builders — idea to validated spec in five phases.
+Rigorous product management for solo builders — from raw idea to a plan and handoff your coding tool can use.
 
-## Phases
+## Conversation flow (internal)
 
-- **CLARIFY** — Understand the idea, narrow to thesis, lock platform and constraints.
-- **VALIDATE** — Market + user research via subagents, synthesize findings, offer pivot options.
-- **DEFINE** — Lock user cohort, primary problem, V1 scope (≤5 features), build preferences.
-- **SPECIFY** — Product detail → tech architecture + design + tests (two waves), assemble handoff.
-- **LAUNCH** — Optional distribution plan for first 100 users.
+The choreographer runs this without exposing step names to the user:
+
+- **Understand** — Clarify the idea, audience, platform, constraints.
+- **Research** — Combined market + user research via the **researcher** subagent (`prompts/researcher.md`) → `research.md`.
+- **Plan** — Lock scope and decisions → `plan.md`.
+- **Handoff** — Build-ready document → `handoff.md`.
+
+Optional: `screens.md`, `tests.md` if the user asks; `summary.md` only if the user says **"save summary"** after plan lock.
+
+On **"lock it"**: emit a plain-English chat summary (no file by default); then offer the one-line **save summary** prompt. Stack/framework names only in plan finalization and `handoff.md`, not in early questions; tech terms always **named + one-line plain implication** there.
 
 ## How to start
 
-1. Read `prompts/choreographer.md` — it contains full orchestration logic, state management, quality gates, and phase transitions.
-2. Check for existing `ttt/ttt_state.json`. If found, resume from the saved phase and step.
-3. If no state file exists, begin the Clarify phase.
+1. Read `prompts/choreographer.md` — full orchestration, tone, file formats, and state handling.
+2. Check for existing `ttt/ttt_state.json`. If found, resume from saved progress.
+3. If no state file exists, begin by understanding the idea.
 
 ## Spawning subagents
 
-When the choreographer calls for a subagent:
+When the choreographer calls for research:
 
-- **Primary path:** Use the Task tool to spawn a foreground subagent. Read the prompt file (e.g. `prompts/market_researcher.md`) and pass its content as the system instruction. Include input file paths explicitly in the task description. State the expected output filename.
-- **Parallel spawns (Validate phase):** Issue multiple Task calls in a single response to run Market Researcher and User Researcher concurrently.
-- **Fallback (Task tool unavailable):** Read the prompt inline with `@prompts/[agent].md`, execute sequentially in current context. Same output files and quality gates apply.
+- **Primary path:** Use the Task tool to spawn a foreground subagent. Read `prompts/researcher.md` and pass its content as the system instruction. Include what you know about the idea, platform, and user in the task description. Expected artifact: `research.md` under `{artifact_root}/`.
+- **Fallback (Task tool unavailable):** Read the prompt inline with `@prompts/researcher.md` and run in the current context. Same output file and quality expectations.
 
 ## Key rules
 
-- **Scope:** Max 5 V1 features; each must map to a job-to-be-done.
-- **Quality:** Validate every subagent output before writing to file; retry up to 3 times on failure.
-- **State:** Update `ttt_state.json` on every phase transition, decision, and pivot.
+- **Scope:** Max 5 V1 features; each must map to a real user problem.
+- **Quality:** Validate researcher output before persisting; retry up to 3 times on failure.
+- **State:** Update `ttt_state.json` on significant decisions and progress (do not narrate to the user).
 - **Questions:** Max 2 per message; lead with the most important.
 - **Honesty:** Label weak data, flag crowded markets, admit when research failed or is incomplete.
+- **UX:** Do not narrate reading/writing files or updating JSON. Speak in plain-language progress (see choreographer). Read state once per turn and only the files needed for the immediate step.
